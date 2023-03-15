@@ -196,6 +196,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         wsprintf(str, TEXT("Нажата клавиша %c"),(WCHAR)wParam);
         MessageBox(0, str, TEXT("WM_CHAR"), MB_OK | MB_ICONINFORMATION);
         break;*/
+    case WM_KEYDOWN:
+        if ((WCHAR)wParam == VK_RETURN)
+        {
+            wsprintf(str, TEXT("Нажата клавиша Enter %c"), (WCHAR)wParam); 
+            MessageBox(0, str, TEXT("WM_CHAR"), MB_OK | MB_ICONINFORMATION);
+
+        }
+        break;
 
     case WM_PAINT:
         {
