@@ -199,8 +199,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_KEYDOWN:
         if ((WCHAR)wParam == VK_RETURN)
         {
-            //wsprintf(str, TEXT("Нажата клавиша Enter %c"), (WCHAR)wParam); 
-            //MessageBox(0, str, TEXT("WM_CHAR"), MB_OK | MB_ICONINFORMATION);
+            //wsprintf(str, TEXT("Нажата клавиша Enter %c"), (WCHAR)wParam); //Формирование сообщения
+            //MessageBox(0, str, TEXT("WM_CHAR"), MB_OK | MB_ICONINFORMATION); //Принятие сообщение в MessageBox и вывод MessageBox 
             MoveWindow(hWnd, 0, 0, 300, 300, TRUE);
         }
         break;
