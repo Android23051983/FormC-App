@@ -5,8 +5,8 @@
 #include "FormC++App.h"
 
 #define MAX_LOADSTRING 100
-#define width 300
-#define height 300
+#define width 500
+#define height 500
 #define x 100
 #define y 100
 
@@ -199,9 +199,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_KEYDOWN:
         if ((WCHAR)wParam == VK_RETURN)
         {
-            wsprintf(str, TEXT("Нажата клавиша Enter %c"), (WCHAR)wParam); 
-            MessageBox(0, str, TEXT("WM_CHAR"), MB_OK | MB_ICONINFORMATION);
-
+            //wsprintf(str, TEXT("Нажата клавиша Enter %c"), (WCHAR)wParam); 
+            //MessageBox(0, str, TEXT("WM_CHAR"), MB_OK | MB_ICONINFORMATION);
+            MoveWindow(hWnd, 0, 0, 300, 300, TRUE);
         }
         break;
 
