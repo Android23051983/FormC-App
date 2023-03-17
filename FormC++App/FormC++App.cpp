@@ -12,6 +12,8 @@ int x = 100;
 int y = 100;
 int Wx = 0;
 int Wy = 0;
+int WinX = 0;
+int WinY = 0;
 
 
 // Глобальные переменные:
@@ -221,13 +223,36 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         MessageBox(0, str, TEXT("WM_CHAR"), MB_OK | MB_ICONINFORMATION);
         break;*/
     case WM_KEYDOWN:
+       
         if ((WCHAR)wParam == VK_RETURN)
         {
+            MoveWindow(hWnd, 0, 0, 300, 300, TRUE);
+            WinX = GetSystemMetrics(SM_CXSCREEN);
+            WinY = GetSystemMetrics(SM_CYSCREEN);
+            /*wsprintf(szTitle, TEXT("X=%d Y=%d"), WinX, WinY);
+            SetWindowText(hWnd, szTitle);*/
+            for (int i = 0; i < WinX; i++)
+            {
+                for (int j = 0; j < WinY; j++)
+                {
+                    MoveWindow(hWnd, i, j, 300, 300, TRUE);
+                }
+            }
             //wsprintf(str, TEXT("Нажата клавиша Enter %c"), (WCHAR)wParam); //Формирование сообщения
             //MessageBox(0, str, TEXT("WM_CHAR"), MB_OK | MB_ICONINFORMATION); //Принятие сообщение в MessageBox и вывод MessageBox 
-            MoveWindow(hWnd, 0, 0, 300, 300, TRUE);
         }
-        break;
+        else if ((WCHAR)wParam == VK_ESCAPE)
+        {
+            BringWindowToTop(hWnd);
+            break;
+        }
+            
+
+       /* else if (wParam == VK_ESCAPE)
+        {
+            MoveWindow(hWnd, 0, 0, 300, 300, TRUE);
+            break;
+        }*/
 
     case WM_PAINT:
         {
