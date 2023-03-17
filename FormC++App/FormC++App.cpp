@@ -5,10 +5,11 @@
 #include "FormC++App.h"
 
 #define MAX_LOADSTRING 100
-#define width 500
-#define height 500
-#define x 100
-#define y 100
+int width = 500;
+int height = 500;
+int x = 100;
+int y = 100;
+
 
 // Глобальные переменные:
 HINSTANCE hInst;                                // текущий экземпляр
@@ -21,6 +22,8 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+RECT rect;
 
 void SetTitle(void)
 {
@@ -164,6 +167,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         r++;
         SetTitle();
         SetWindowText(hWnd, szTitle);
+        GetWindowRect(hWnd, &rect);
+        width = rect.right - rect.left;
+        height = rect.bottom - rect.top;
+        wsprintf(szTitle, TEXT("w=%d h=%d"), width, height);
+        SetWindowText(hWnd, szTitle);
         break;
     
     case WM_MBUTTONDOWN:
@@ -189,8 +197,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         SetWindowText(hWnd, szTitle);
         break;
     case WM_MOUSEMOVE:
-        wsprintf(str, TEXT("X=%d Y=%d"), LOWORD(lParam), HIWORD(lParam));
-        SetWindowText(hWnd, str);
+      /*  wsprintf(szTitle, TEXT("X=%d Y=%d"), LOWORD(lParam), HIWORD(lParam));
+        SetWindowText(hWnd, szTitle);*/
         break;
    /* case WM_CHAR:
         wsprintf(str, TEXT("Нажата клавиша %c"),(WCHAR)wParam);
