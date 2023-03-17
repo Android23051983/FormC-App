@@ -169,12 +169,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         Wy = HIWORD(lParam);
         if (Wx < 10 || Wy < 10)
         {
-            wsprintf(szTitle, TEXT("%s"), "coordinates outside the window");
+            wsprintf(szTitle, TEXT("%s"), "1");
             SetWindowText(hWnd, szTitle);
         }
         else if (Wx > 10 || Wy > 10)
         {
-            wsprintf(szTitle, TEXT("%s"), "coordinates inside the window");
+            wsprintf(szTitle, TEXT("%s"), "2");
             SetWindowText(hWnd, szTitle);
         }
         break;
