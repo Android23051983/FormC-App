@@ -9,6 +9,8 @@ int width = 500;
 int height = 500;
 int x = 100;
 int y = 100;
+int Wx = 0;
+int Wy = 0;
 
 
 // Глобальные переменные:
@@ -24,6 +26,7 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 RECT rect;
+POINT koord;
 
 void SetTitle(void)
 {
@@ -160,6 +163,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_LBUTTONDOWN:
         l++;
         SetTitle();
+        SetWindowText(hWnd, szTitle);
+        Wx = LOWORD(lParam);
+        Wy = HIWORD(lParam);
+        wsprintf(szTitle, TEXT("X=%d, Y=%d"),Wx, Wy);
         SetWindowText(hWnd, szTitle);
         break;
 
