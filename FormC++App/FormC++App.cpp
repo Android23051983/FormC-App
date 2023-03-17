@@ -1,5 +1,6 @@
 ﻿// FormC++App.cpp : Определяет точку входа для приложения.
-//
+
+#define _CRT_SECURE_NO_WARNIGNS
 
 #include "framework.h"
 #include "FormC++App.h"
@@ -166,8 +167,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         SetWindowText(hWnd, szTitle);
         Wx = LOWORD(lParam);
         Wy = HIWORD(lParam);
-        wsprintf(szTitle, TEXT("X=%d, Y=%d"),Wx, Wy);
-        SetWindowText(hWnd, szTitle);
+        if (Wx < 10 || Wy < 10)
+        {
+            wsprintf(szTitle, TEXT("%s"), "coordinates outside the window");
+            SetWindowText(hWnd, szTitle);
+        }
+        else if (Wx > 10 || Wy > 10)
+        {
+            wsprintf(szTitle, TEXT("%s"), "coordinates inside the window");
+            SetWindowText(hWnd, szTitle);
+        }
         break;
 
     case WM_RBUTTONDOWN:
