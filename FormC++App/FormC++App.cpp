@@ -171,12 +171,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         Wy = HIWORD(lParam);
         if (Wx < 10 || Wy < 10)
         {
-            wsprintf(szTitle, TEXT("%s"), "1");
+            wsprintf(szTitle, TEXT("%s"), L"Щелчок снаружи прямоугольника");
             SetWindowText(hWnd, szTitle);
         }
         else if (Wx > 10 || Wy > 10)
         {
-            wsprintf(szTitle, TEXT("%s"), "2");
+            wsprintf(szTitle, TEXT("%s"), L"Щелчок внутри прямоугольника");
             SetWindowText(hWnd, szTitle);
         }
         break;
