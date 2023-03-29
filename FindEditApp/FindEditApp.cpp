@@ -162,14 +162,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_KEYDOWN:
         if (wParam == VK_RETURN)
         {
-            HWND calc = FindWindow(NULL, TEXT("Калькулятор"));
+            /*HWND calc = FindWindow(NULL, TEXT("Калькулятор"));
             if (!calc)
                 MessageBox(hWnd, TEXT("Откройте \"Калькулятор\""), TEXT("ОШИБКА!!!"), MB_OK | MB_ICONSTOP);
             else
             {
                 MessageBox(hWnd, TEXT(" \"Калькулятор\" открыт"), TEXT("Оповещение"), MB_OK | MB_ICONINFORMATION);
                 EnumChildWindows(calc, EnumChildProc, (LPARAM)hWnd);
+            }*/
+            HWND hwndCalc = FindWindow(NULL, TEXT("Калькулятор"));
+            if (hwndCalc == NULL)
+            {
+                MessageBox(hWnd, TEXT("Откройте \"Калькулятор\""), TEXT("ОШИБКА!!!"), MB_OK | MB_ICONSTOP);
+
+                return 0;
             }
+            for (unsigned int i = 0; i < 10; i++)
+                SendMessage(hwndCalc, WM_COMMAND, 0x7D + i, 0);
+
         }
         break;
     case WM_PAINT:
